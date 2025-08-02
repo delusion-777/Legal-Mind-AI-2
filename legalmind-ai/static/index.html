@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LegalMind AI - Advanced Legal Intelligence Platform</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">AI</div>
+                    <div class="logo-text">
+                        <h1>LegalMind AI</h1>
+                        <p>Advanced Legal Intelligence Platform</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <!-- Tab Navigation -->
+            <div class="tabs">
+                <div class="tab-list">
+                    <button class="tab-button active" data-tab="analyzer">
+                        <i class="fas fa-search"></i>
+                        Document Analyzer
+                    </button>
+                    <button class="tab-button" data-tab="summarizer">
+                        <i class="fas fa-file-text"></i>
+                        Document Summarizer
+                    </button>
+                    <button class="tab-button" data-tab="echo-verse">
+                        <i class="fas fa-volume-up"></i>
+                        Echo Verse
+                    </button>
+                    <button class="tab-button" data-tab="chat">
+                        <i class="fas fa-comments"></i>
+                        Legal Assistant
+                    </button>
+                </div>
+
+                <!-- Document Analyzer Tab -->
+                <div class="tab-content active" id="analyzer">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2><i class="fas fa-file-text"></i> AI-Powered Legal Document Analyzer</h2>
+                            <p>Upload legal documents for comprehensive AI analysis with multilingual support and detailed improvement suggestions.</p>
+                        </div>
+                        <div class="card-content">
+                            <form id="analyzeForm" enctype="multipart/form-data">
+                                <div class="form-group">
+                                    <label>Upload Legal Document</label>
+                                    <div class="file-upload" id="analyzeFileUpload">
+                                        <i class="fas fa-cloud-upload-alt"></i>
+                                        <div class="upload-text">
+                                            <p class="file-name">Choose File</p>
+                                            <p class="file-size">No file chosen</p>
+                                            <p class="file-info">Supports PDF, DOC, DOCX, and TXT files (max 50MB)</p>
+                                            <p class="security-info">Your documents are processed securely using advanced AI analysis</p>
+                                        </div>
+                                        <input type="file" id="analyzeFile" name="file" accept=".pdf,.doc,.docx,.txt" hidden>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label><i class="fas fa-globe"></i> Analysis Language</label>
+                                    <select name="language" id="analyzeLanguage">
+                                        <option value="english">🇺🇸 English (English)</option>
+                                        <option value="spanish">🇪🇸 Spanish (Español)</option>
+                                        <option value="french">🇫🇷 French (Français)</option>
+                                        <option value="german">🇩🇪 German (Deutsch)</option>
+                                        <option value="italian">🇮🇹 Italian (Italiano)</option>
+                                    </select>
+                                </div>
+
+                                <button type="submit" class="btn-primary" id="analyzeBtn">
+                                    <span class="btn-text">Analyze Document with AI</span>
+                                    <span class="btn-loading hidden">
+                                        <i class="fas fa-spinner fa-spin"></i>
+                                        Analyzing Document with AI...
+                                    </span>
+                                </button>
+                            </form>
+
+                            <div id="analyzeResults" class="results hidden">
+                                <h3>Analysis Results</h3>
+                                <div class="results-content">
+                                    <pre id="analyzeOutput"></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Document Summarizer Tab -->
+                <div class="tab-content" id="summarizer">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2><i class="fas fa-file-text"></i> Document Summarizer</h2>
+                            <p>Generate concise summaries of legal documents using advanced AI technology.</p>
+                        </div>
+                        <div class="card-content">
+                            <form id="summarizeForm" enctype="multipart/form-data">
+                                <div class="form-group">
+                                    <label>Upload Document or Enter Text</label>
+                                    <div class="input-grid">
+                                        <div class="input-col">
+                                            <label class="sub-label">Upload File</label>
+                                            <div class="file-upload small" id="summarizeFileUpload">
+                                                <i class="fas fa-cloud-upload-alt"></i>
+                                                <span class="file-name">Choose file to upload</span>
+                                                <input type="file" id="summarizeFile" name="file" accept=".pdf,.doc,.docx,.txt" hidden>
+                                            </div>
+                                        </div>
+                                        <div class="input-col">
+                                            <label class="sub-label">Or Enter Text</label>
+                                            <textarea name="text" id="summarizeText" placeholder="Paste your document text here..." rows="5"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Summary Length</label>
+                                    <select name="length" id="summaryLength">
+                                        <option value="short">Short (1-2 paragraphs)</option>
+                                        <option value="medium" selected>Medium (3-4 paragraphs)</option>
+                                        <option value="long">Long (5+ paragraphs)</option>
+                                    </select>
+                                </div>
+
+                                <button type="submit" class="btn-primary" id="summarizeBtn">
+                                    <span class="btn-text">Generate Summary</span>
+                                    <span class="btn-loading hidden">
+                                        <i class="fas fa-spinner fa-spin"></i>
+                                        Generating Summary...
+                                    </span>
+                                </button>
+                            </form>
+
+                            <div id="summarizeResults" class="results hidden">
+                                <h3>Document Summary</h3>
+                                <div class="results-content">
+                                    <p id="summarizeOutput"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Echo Verse Tab -->
+                <div class="tab-content" id="echo-verse">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2><i class="fas fa-volume-up"></i> Echo Verse - Text to Speech</h2>
+                            <p>Convert your legal documents and text into natural-sounding speech using advanced AI voice synthesis.</p>
+                        </div>
+                        <div class="card-content">
+                            <form id="ttsForm">
+                                <div class="form-group">
+                                    <label>Text to Convert</label>
+                                    <textarea name="text" id="ttsText" placeholder="Enter the text you want to convert to speech..." rows="6"></textarea>
+                                    <div class="char-count">
+                                        <span id="charCount">0</span> characters • Optimal length: 100-1000 characters
+                                    </div>
+                                </div>
+
+                                <div class="input-grid">
+                                    <div class="input-col">
+                                        <label>Voice Type</label>
+                                        <select name="voice" id="voiceType">
+                                            <option value="female">Female Voice</option>
+                                            <option value="male">Male Voice</option>
+                                            <option value="neutral">Neutral Voice</option>
+                                        </select>
+                                    </div>
+                                    <div class="input-col">
+                                        <label>Speech Speed</label>
+                                        <select name="speed" id="speechSpeed">
+                                            <option value="slow">Slow</option>
+                                            <option value="normal" selected>Normal</option>
+                                            <option value="fast">Fast</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="btn-primary" id="ttsBtn">
+                                    <span class="btn-text">
+                                        <i class="fas fa-volume-up"></i>
+                                        Generate Speech
+                                    </span>
+                                    <span class="btn-loading hidden">
+                                        <i class="fas fa-spinner fa-spin"></i>
+                                        Generating Speech...
+                                    </span>
+                                </button>
+                            </form>
+
+                            <div id="ttsResults" class="results hidden">
+                                <h3>Generated Audio</h3>
+                                <div class="audio-player">
+                                    <div class="audio-controls">
+                                        <button id="playBtn" class="btn-secondary">
+                                            <i class="fas fa-play"></i>
+                                        </button>
+                                        <button id="downloadBtn" class="btn-secondary">
+                                            <i class="fas fa-download"></i>
+                                            Download
+                                        </button>
+                                    </div>
+                                    <audio id="audioPlayer" controls class="audio-element"></audio>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Legal Chat Tab -->
+                <div class="tab-content" id="chat">
+                    <div class="card chat-card">
+                        <div class="card-header">
+                            <h2>
+                                <i class="fas fa-comments"></i> 
+                                Legal AI Assistant
+                                <span class="beta-badge">Beta</span>
+                            </h2>
+                            <p>Get general legal information and guidance. Always consult with qualified legal professionals for specific advice.</p>
+                        </div>
+                        <div class="card-content chat-content">
+                            <div class="chat-messages" id="chatMessages">
+                                <div class="message ai-message">
+                                    <div class="message-content">
+                                        <p>Hello! I'm your AI legal assistant. I can help answer general legal questions, but please remember that this is not a substitute for professional legal advice. How can I assist you today?</p>
+                                        <span class="message-time"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="chat-input-area">
+                                <div class="quick-questions">
+                                    <button class="quick-btn" data-question="Tell me about contract basics">Contract basics</button>
+                                    <button class="quick-btn" data-question="Tell me about copyright info">Copyright info</button>
+                                    <button class="quick-btn" data-question="Tell me about employment rights">Employment rights</button>
+                                    <button class="quick-btn" data-question="Tell me about privacy laws">Privacy laws</button>
+                                </div>
+                                
+                                <div class="chat-input">
+                                    <textarea id="chatInput" placeholder="Ask a legal question (e.g., 'What should I know about contracts?')" rows="2"></textarea>
+                                    <button id="sendBtn" class="btn-primary">
+                                        <i class="fas fa-paper-plane"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Toast Notifications -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
