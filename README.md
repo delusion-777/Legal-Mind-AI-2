@@ -11,7 +11,7 @@ LGLmind is an AI-powered legal assistant built with Python and Streamlit. It hel
 🎧 EchoVerse: Transforms and echoes your legal inputs
 
 🗂️ Project Structure
-bash
+bash---
 Copy
 Edit
 LGLmind/
